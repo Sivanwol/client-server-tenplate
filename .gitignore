@@ -33,3 +33,4 @@ yarn-error.log*
 /__generated__
 *.db*
 migrations/
+*.graphql.d.ts

@@ -1,7 +1,7 @@
 import {ApolloServer} from 'apollo-server-micro';
 import {schema} from '../../lib/schema';
 import { PrismaClient } from '@prisma/client'
-import {createContext} from "common/graphql/context";
+import {createContext} from "../../common/graphql/context";
 
 
 const apolloServer = new ApolloServer({

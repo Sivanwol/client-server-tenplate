@@ -21,6 +21,7 @@ const Mutation: Required<MutationResolvers<ResolverContext>> = {
   async updateDataItem(_parent, _args, _context, _info) {
     // userProfile.name = _args.name
     // return userProfile
+    return null;
   },
 }
 
