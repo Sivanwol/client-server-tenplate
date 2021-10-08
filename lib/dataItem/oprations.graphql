@@ -1,0 +1,15 @@
+
+# import Partial from './partial.graphql'
+
+query DataItems {
+  dataItems {
+    ...Partial
+  }
+}
+
+mutation UpdateDataItem($id: Int!,$name: String!) {
+  updateDataItem(id: $id, name: $name) {
+    id
+    name
+  }
+}

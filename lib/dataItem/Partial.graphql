@@ -1,0 +1,4 @@
+fragment Partial on DataItem {
+  id
+  name
+}

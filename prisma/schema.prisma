@@ -5,7 +5,14 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"
+  url      = env("DATABASE_URL")
+}
+
+model DataItems {
+  id            Int       @id @default(autoincrement())
+  name          String?
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
 }
 
 model User {
@@ -16,7 +23,7 @@ model User {
   image         String?
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  @@map(name: "users")
+  isAdmin      Int     @default(0)
 }
 
 model Account {

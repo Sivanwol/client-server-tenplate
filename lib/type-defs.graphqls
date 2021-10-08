@@ -1,7 +1,9 @@
 type Query {
   viewer: User!
+  dataItems: DataItem!
 }
 
 type Mutation {
   updateName(name: String!): User!
+  updateDataItem(id: Int! , name:String!): DataItem!
 }
