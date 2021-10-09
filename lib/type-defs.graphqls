@@ -1,6 +1,6 @@
 type Query {
   viewer: User!
-  dataItems: DataItem!
+  dataItems: [DataItem!]
 }
 
 type Mutation {
