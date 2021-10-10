@@ -6,8 +6,5 @@ export default withApollo(
     new ApolloClient({
       uri: process.env.GRAPHQL_URI,
       cache: new InMemoryCache().restore(initialState || {})
-    }),
-  {
-    getDataFromTree: 'ssr'
-  }
+    })
 );

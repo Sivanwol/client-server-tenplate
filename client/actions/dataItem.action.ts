@@ -1,8 +1,8 @@
 import { action } from 'typesafe-actions';
+import { gql, useQuery } from '@apollo/client';
 import { ActionTypes, AsyncActionCreator } from '@client/actions/types';
 import { FilteredOptions, ApplicationState } from '@client/reducers/types';
 import { DataItem } from '@client/modules';
-import { gql, useQuery } from '@apollo/client';
 import {DataItem_QUERY} from "@client/graphql/dataItem.queries";
 
 export const fetchDataItemsRequest = () => action(ActionTypes.FETCH_DATAITEMS_REQUEST);
@@ -31,7 +31,7 @@ export const fetchDataItems: AsyncActionCreator<Promise<void>> = () => async dis
 };
 
 export const shouldFetchDataItems = (state: ApplicationState): boolean => {
-  return (state.DataItems.data.length !== 0 || state.DataItems.loading);
+  return (state.dataItems.data.length !== 0 || state.dataItems.loading);
 };
 
 export const fetchDataItemsIfNeeded: AsyncActionCreator<Promise<void>> = () => async (

@@ -1,5 +1,18 @@
 {
   "presets": [
     "next/babel"
+  ],
+  "plugins": [
+    ["styled-components", { "ssr": true, "displayName": false, "preprocess": false } ],
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "@client": "./client",
+        "static": "./static",
+        "pages": "./pages",
+        "tests": "./tests",
+        "@mock": "./mocks"
+      }
+    }]
   ]
 }

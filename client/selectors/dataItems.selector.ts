@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { ApplicationState, DateItemState, FilteredOptions } from '@client/reducers/types';
 import { DataItem } from '@client/modules';
 
-export const selectDataItemsState = () => (state: ApplicationState) => state.DataItems;
+export const selectDataItemsState = () => (state: ApplicationState) => state.dataItems;
 
 
 export const selectDataItemsLoading = () =>

@@ -1,7 +1,7 @@
-
-import { Reducer } from 'redux';
-import { ActionTypes, DataItemsActions } from '@client/actions/types';
+import {Reducer} from 'redux';
+import {ActionTypes, DataItemsActions} from '@client/actions/types';
 import {DateItemState} from "@client/reducers/types";
+
 
 export const initialState = {
   data: [],

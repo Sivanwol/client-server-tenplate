@@ -28,9 +28,6 @@
       "static/": [
         "./static/*"
       ],
-      "server/": [
-        "./server/*"
-      ],
       "tests/": [
         "./tests/*"
       ],

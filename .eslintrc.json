@@ -1,6 +1,12 @@
 {
-  "extends": "next",
+  "extends": ["eslint:recommended","next", "prettier"],
   "rules": {
-    "no-document-import-in-page": "off"
+    "no-document-import-in-page": "off",
+    "import/no-unresolved": "error",
+    "import/order": "error",
+    "import/named": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off"
   }
 }

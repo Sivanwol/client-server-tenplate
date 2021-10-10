@@ -4,7 +4,7 @@ import {QueryResolvers, MutationResolvers} from 'lib/type-defs.graphqls'
 // import { createUser, findUser, validatePassword } from '../lib/user'
 // import { setLoginSession, getLoginSession } from '../lib/auth'
 // import { removeTokenCookie } from '../lib/auth-cookies'
-import {ResolverContext} from '../apollo'
+// import {ResolverContext} from '../apollo'
 
 const userProfile = {
   id: String(1),
