@@ -1,13 +1,12 @@
 import React, {FC} from 'react';
-import {DataItemProps} from "@client/components/DataItemsList/DataItemView/types";
 import {Card} from "antd";
+import {DataItemProps} from "@client/components/DataItemsList/DataItemView/types";
 
 const DataItemView: FC<DataItemProps> = ({
                                            item
                                          }) => {
 
-  const {name, id} = item;
-  const title = `Data Item ${id}`;
+  const {name, title, id} = item;
   return (
     <div className="site-card-border-less-wrapper">
       <Card title={title} bordered={false} style={{ width: 300 }}>

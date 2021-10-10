@@ -1,17 +1,25 @@
-import React from 'react';
-import {Row, Col} from 'antd';
+import React, {FC} from 'react';
+import {Row, Col, Card} from 'antd';
 
-class DataItemsListPlaceholder extends React.Component {
-  props: any = {
-    message: ''
-  };
-  render() {
-    const {message} = this.props;
-    return (<Row>
-      <Col span={24}>{message}</Col>
-    </Row>);
-  }
+
+export interface DataItemsListPlaceholderProps {
+  message: string;
 }
 
+const DataItemsListPlaceholder: FC<DataItemsListPlaceholderProps> = ({
+                                                                       message
+                                                                     }) => {
+  return (<Row>
+    <Col span={24}>
+      <div className="site-card-border-less-wrapper">
+        <Card title="" bordered={false} style={{width: 300}}>
+          <p>{message}</p>
+        </Card>
+      </div>
+    </Col>
+  </Row>);
+};
+
+DataItemsListPlaceholder.displayName = 'DataItemsListPlaceholder';
 
 export default DataItemsListPlaceholder;

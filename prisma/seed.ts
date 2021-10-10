@@ -14,6 +14,7 @@ async function main() {
   console.log(`Start seeding ...`)
   for (let i = 0; i<=100; i++) {
     dataItems.push({
+      title: `Item Title ${i}`,
       name: `item_${i}`
     })
   }

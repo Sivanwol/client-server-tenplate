@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Menu} from "antd";
-
 export type HeaderContentProps = {}
 
-export default function HeaderContent({}: HeaderContentProps) {
+const HeaderContent: FC<HeaderContentProps> = () => {
   return (<div className="HeaderContent">
     <div className="logo"/>
     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
@@ -13,3 +12,4 @@ export default function HeaderContent({}: HeaderContentProps) {
     </Menu>
   </div>);
 }
+export default HeaderContent

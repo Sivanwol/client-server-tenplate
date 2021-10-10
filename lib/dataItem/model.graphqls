@@ -1,4 +1,5 @@
 type DataItem {
   id: ID!
+  title: String
   name: String
 }
