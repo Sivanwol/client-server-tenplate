@@ -3,7 +3,7 @@ import {Provider} from "react-redux";
 import {ApolloProvider} from 'react-apollo';
 import NextApp from "next/app";
 import {compose} from "redux";
-import Mainsite from "../client/layouts/MainSite/MainSite";
+import MainSiteLayout from "@client/layouts/MainSite/MainSiteLayout";
 import {AppPageProps} from '@client/types/pages';
 import makeStore from '@client/utils/store';
 import withApollo from '@client/utils/withApollo';
@@ -15,9 +15,9 @@ class App extends NextApp<AppPageProps> {
     return (
       <ApolloProvider client={apollo}>
         <Provider store={store}>
-          <Mainsite>
+          <MainSiteLayout>
             <Component {...pageProps} />
-          </Mainsite>
+          </MainSiteLayout>
         </Provider>
       </ApolloProvider>
     );

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Menu} from "antd";
 
-export type HeadercontentProps = {}
+export type HeaderContentProps = {}
 
-export default function Headercontent({}: HeadercontentProps) {
+export default function HeaderContent({}: HeaderContentProps) {
   return (<div className="HeaderContent">
     <div className="logo"/>
     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>

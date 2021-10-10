@@ -7,7 +7,7 @@ import DataItemsList from '@client/containers/DataItemsListByRedux';
 
 const HomePage: NextPage<Partial<PageProps>> = () => (
   <>
-    <Helmet title="With Redux demo" meta={[{ property: 'og:title', content: 'With Redux demo' }]} />
+    <Helmet title="Main Site Template" meta={[{ property: 'og:title', content: 'Main Site Template' }]} />
     <DataItemsList />
   </>
 );

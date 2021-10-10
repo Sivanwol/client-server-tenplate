@@ -1,18 +1,17 @@
+import React, {FC, useCallback} from 'react';
+import {Col, Row} from "antd";
 import {DataItemsListProps} from "@client/components/DataItemsList/types";
 import DataItemsListPlaceholder from "@client/components/DataItemsList/DataItemsListPlaceholder";
-import React, {FC, useCallback, useEffect} from 'react';
 import {DataItem} from "@client/modules";
-import {Col, Row} from "antd";
 import DataItemView from "@client/components/DataItemsList/DataItemView";
-import ProductsList from "@client/containers/DataItemsListByRedux";
 
 const DataItemsList: FC<DataItemsListProps> = ({
-                                                items,
-                                                loading,
-                                                error,
-                                              }) => {
+                                                 items,
+                                                 loading,
+                                                 error,
+                                               }) => {
 
-  const renderProduct = useCallback(
+  const renderDataItem = useCallback(
     (dataItem: DataItem) => (
       <Col span={4}>
         <DataItemView
@@ -34,14 +33,19 @@ const DataItemsList: FC<DataItemsListProps> = ({
       <DataItemsListPlaceholder message="Opp...something wrong happened! Please try again."/>
     );
   }
+  // Show loading placeholder when fetching products
+  if (items && items.length === 0) {
+    return <DataItemsListPlaceholder message="No Data"/>;
+  }
+  console.log(items)
 
   return (
     <Row>
-      {items.map(renderProduct)}
+      {(items) ? items.map(renderDataItem): ''}
     </Row>
   );
 };
 
-ProductsList.displayName = 'ProductsList';
+DataItemsList.displayName = 'DataItemsList';
 
-export default ProductsList;
+export default DataItemsList;

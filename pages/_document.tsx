@@ -1,7 +1,7 @@
 import React from 'react';
-import NextDocument, {Head, Main, NextScript, DocumentContext, DocumentProps} from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
-import Helmet, { HelmetData } from 'react-helmet';
+import NextDocument, {Html, Head, Main, NextScript, DocumentContext, DocumentProps} from 'next/document';
+import {ServerStyleSheet} from 'styled-components';
+import Helmet, {HelmetData} from 'react-helmet';
 
 interface DocumentPageProps extends DocumentProps {
   helmet: HelmetData;
@@ -9,12 +9,12 @@ interface DocumentPageProps extends DocumentProps {
 }
 
 export default class Document extends NextDocument<DocumentPageProps> {
-  static async getInitialProps({ renderPage }: DocumentContext) {
+  static async getInitialProps({renderPage}: DocumentContext) {
     const sheet = new ServerStyleSheet();
     const page = renderPage(App => props => sheet.collectStyles(<App {...props} />));
     const styleTags = sheet.getStyleElement();
 
-    return { ...page, styleTags, helmet: Helmet.rewind() };
+    return {...page, styleTags, helmet: Helmet.rewind()};
   }
 
   helmetHtmlAttrComponents() {
@@ -31,21 +31,23 @@ export default class Document extends NextDocument<DocumentPageProps> {
   }
 
   render() {
+    const {styleTags,helmet} = this.props;
     return (
-      <html lang="en" {...this.helmetHtmlAttrComponents()}>
-      <Head>
-        <meta name="robots" content="index,follow" />
-        <meta httpEquiv="expires" content="10800" />
-        <meta name="generator" content="Akqa coding test app" />
-        <meta name="Description" content="Akqa coding test app" />
-        {this.helmetHeadComponents()}
-        {this.props.styleTags}
-      </Head>
-      <body>
-      <Main />
-      <NextScript />
-      </body>
-      </html>
+      <Html lang="en" {...this.helmetHtmlAttrComponents()}>
+        <Head>
+          <meta name="robots" content="index,follow"/>
+          <meta httpEquiv="expires" content="10800"/>
+          <meta name="generator" content="Akqa coding test app"/>
+          <meta name="Description" content="Akqa coding test app"/>
+          {/* eslint-disable-next-line @next/next/no-title-in-document-head */}
+          {this.helmetHeadComponents()}
+          {styleTags}
+        </Head>
+        <body>
+          <Main/>
+          <NextScript/>
+        </body>
+      </Html>
     );
   }
 }

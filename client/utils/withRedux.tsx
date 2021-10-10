@@ -74,5 +74,4 @@ const withRedux: WithRedux = createStore => {
       }
     };
 };
-
 export default withRedux;

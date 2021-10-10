@@ -12,9 +12,9 @@ export default connect(
     selectDataItemsLoading(),
     selectDataItemsData(),
     selectDataItemsError(),
-    ( loading,products, error) => ({
+    ( loading,items, error) => ({
       loading,
-      products,
+      items,
       error
     })
   ),
