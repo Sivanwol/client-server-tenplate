@@ -1,8 +1,12 @@
 import React from 'react';
-import NextDocument, { Head, Main, NextScript, DocumentContext } from 'next/document';
+import NextDocument, {Head, Main, NextScript, DocumentContext, DocumentProps} from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import Helmet, { HelmetData } from 'react-helmet';
-import { DocumentPageProps } from '@client/types/pages';
+
+interface DocumentPageProps extends DocumentProps {
+  helmet: HelmetData;
+  styleTags: object;
+}
 
 export default class Document extends NextDocument<DocumentPageProps> {
   static async getInitialProps({ renderPage }: DocumentContext) {

@@ -1,6 +1,6 @@
 
 import { Reducer } from 'redux';
-import { ActionTypes, ProductsActions } from '@client/actions/types';
+import { ActionTypes, DataItemsActions } from '@client/actions/types';
 import {DateItemState} from "@client/reducers/types";
 
 export const initialState = {
@@ -13,16 +13,16 @@ export const initialState = {
   }
 };
 
-const dataItemReducer: Reducer<DateItemState, ProductsActions> = (state = initialState, action) => {
+const dataItemReducer: Reducer<DateItemState, DataItemsActions> = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.FETCH_PRODUCTS_REQUEST: {
+    case ActionTypes.FETCH_DATAITEMS_REQUEST: {
       return {
         ...state,
         loading: true
       };
     }
 
-    case ActionTypes.FETCH_PRODUCTS_SUCCESS: {
+    case ActionTypes.FETCH_DATAITEMS_SUCCESS: {
       return {
         ...state,
         loading: false,
@@ -30,28 +30,11 @@ const dataItemReducer: Reducer<DateItemState, ProductsActions> = (state = initia
       };
     }
 
-    case ActionTypes.FETCH_PRODUCTS_FAILURE: {
+    case ActionTypes.FETCH_DATAITEMS_FAILURE: {
       return {
         ...state,
         loading: false,
         error: true
-      };
-    }
-
-    case ActionTypes.UPDATE_PRODUCT_SIZES: {
-      return {
-        ...state,
-        sizes: action.payload.sizes
-      };
-    }
-
-    case ActionTypes.FILTER_PRODUCTS: {
-      return {
-        ...state,
-        filteredOptions: {
-          ...state.filteredOptions,
-          ...action.payload.filteredOptions
-        }
       };
     }
 

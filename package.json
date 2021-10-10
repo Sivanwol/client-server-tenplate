@@ -5,8 +5,8 @@
   "scripts": {
     "codegen": "graphql-let",
     "clean:build": "rimraf .next",
-    "prebuild": "yarn lint:ts && yarn lint:style && yarn clean:build",
-    "dev": "yarn lint && yarn codegen && next dev",
+    "prebuild": "yarn clean:build && yarn lint:ts && yarn lint:style && yarn clean:build",
+    "dev": "yarn clean:build && yarn lint && yarn codegen && next dev",
     "build": "yarn lint && yarn codegen && yarn cypress && next build",
     "start": "next start",
     "lint": "next lint",
