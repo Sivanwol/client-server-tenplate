@@ -4,7 +4,6 @@ import Footercontent from "client/components/FooterContent/FooterContent";
 import HeaderContent from "client/components/HeaderContent/HeaderContent";
 
 const { Header, Content, Footer } = Layout;
-// export type MainSiteProps = {}
 
 export default class MainSiteLayout extends React.Component {
   render() {
