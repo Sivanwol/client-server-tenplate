@@ -16,7 +16,28 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@client/*": [
+        "client/*"
+      ],
+      "pages/": [
+        "./pages/*"
+      ],
+      "static/": [
+        "./static/*"
+      ],
+      "server/": [
+        "./server/*"
+      ],
+      "tests/": [
+        "./tests/*"
+      ],
+      "@mock/": [
+        "./mocks/*"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",
