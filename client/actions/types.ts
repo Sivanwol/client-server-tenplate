@@ -6,6 +6,7 @@ import {
   fetchDataItemsRequest,
   fetchDataItemsSuccess
 } from '@client/actions/dataItem.action';
+import {GraphQLClient} from "@client/utils/apollo";
 
 export enum ActionTypes {
   FETCH_DATAITEMS_REQUEST = '@@dataItems/FETCH_DATAITEMS_REQUEST',
@@ -26,6 +27,6 @@ export type DataItemsActions =
 
 export type Actions = DataItemsActions;
 
-export type ThunkReturn<R> = ThunkAction<R, ApplicationState, null, Actions>;
+export type ThunkReturn<R> = ThunkAction<R, ApplicationState, {client: GraphQLClient}, Actions>;
 
 export type AsyncActionCreator<R> = ActionCreator<ThunkReturn<R>>;

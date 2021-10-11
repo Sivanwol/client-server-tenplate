@@ -7,12 +7,7 @@ import MainSiteLayout from "@client/layouts/MainSite/MainSiteLayout";
 import {AppPageProps} from '@client/types/pages';
 import makeStore from '@client/utils/store';
 import withRedux from '@client/utils/withRedux';
-
-console.log(`Attempt connect to ${process.env.GRAPHQL_URI}`)
-const apolloClient = new ApolloClient({
-  uri: process.env.GRAPHQL_URI,
-  cache: new InMemoryCache()
-})
+import apolloClient from '@client/utils/apollo';
 
 class App extends NextApp<AppPageProps> {
   render() {

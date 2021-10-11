@@ -22,6 +22,9 @@ const DataItemsList: FC<DataItemsListProps> = ({
     []
   );
 
+  console.log(items,
+    loading,
+    error)
   // Show loading placeholder when fetching products
   if (loading) {
     return <DataItemsListPlaceholder message="Loading Data ..."/>;
@@ -37,7 +40,6 @@ const DataItemsList: FC<DataItemsListProps> = ({
   if (items && items.length === 0) {
     return <DataItemsListPlaceholder message="No Data"/>;
   }
-  console.log(items)
 
   return (
     <Row>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
-import Footercontent from "client/components/FooterContent/FooterContent";
+import FooterContent from "client/components/FooterContent/FooterContent";
 import HeaderContent from "client/components/HeaderContent/HeaderContent";
 
 const { Header, Content, Footer } = Layout;
@@ -14,7 +14,7 @@ export default class MainSiteLayout extends React.Component {
       <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
         {this.props.children}
       </Content>
-      <Footer style={{ textAlign: 'center' }}><Footercontent /></Footer>
+      <Footer style={{ textAlign: 'center' }}><FooterContent /></Footer>
     </Layout>;
   }
 }

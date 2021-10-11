@@ -1,23 +1,25 @@
-import React from 'react';
-import { NextPage } from 'next';
+import React, {useEffect} from 'react';
+import {NextPage} from 'next';
+import {useDispatch} from "react-redux";
 import Helmet from 'react-helmet';
-import { PageProps } from '@client/types/pages';
-import { fetchDataItemsIfNeeded } from '@client/actions/dataItem.action';
+import {PageProps} from '@client/types/pages';
+import {fetchDataItemsIfNeeded} from '@client/actions/dataItem.action';
 import DataItemsList from '@client/containers/DataItemsListByRedux';
 
-const HomePage: NextPage<Partial<PageProps>> = () => (
-  <>
-    <Helmet title="Main Site Template" meta={[{ property: 'og:title', content: 'Main Site Template' }]} />
-    <DataItemsList />
-  </>
-);
+const HomePage: NextPage<Partial<PageProps>> = () => {
 
-HomePage.getInitialProps = async ({ store}: PageProps) => {
-  console.log("Init");
-  // Fetch products before page is rendered
-  await store.dispatch<any>(fetchDataItemsIfNeeded()); //eslint-disable-line
-
-  return {};
-};
+  const dispatch = useDispatch()
+  useEffect(() => {
+    console.log("Init");
+    // Fetch products before page is rendered
+    dispatch<any>(fetchDataItemsIfNeeded());
+  }, [dispatch])
+  return (
+    <>
+      <Helmet title="Main Site Template" meta={[{property: 'og:title', content: 'Main Site Template'}]}/>
+      <DataItemsList/>
+    </>
+  );
+}
 
 export default HomePage;
