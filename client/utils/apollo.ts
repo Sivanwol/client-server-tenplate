@@ -1,16 +1,20 @@
-import { ApolloClient, DocumentNode, InMemoryCache } from '@apollo/client';
+import {ApolloClient, DocumentNode, InMemoryCache} from '@apollo/client';
+import {GraphQLClient, request} from 'graphql-request'
+import {createUploadLink} from 'apollo-upload-client';
 
-import { createUploadLink } from 'apollo-upload-client';
-
-type Query = <QV, RT>(name: string, query: DocumentNode, variables?: QV) => Promise<RT>;
-type Mutate = <MV, RT>(name: string, mutation: DocumentNode, variables?: MV) => Promise<RT>;
+type Query = <QV, RT>(query: DocumentNode, variables?: QV, authToken?: string) => Promise<RT>;
+type Mutate = <MV, RT>(mutation: DocumentNode, variables?: MV, authToken?: string) => Promise<RT>;
 console.log(`Attempt connect to ${process.env.GRAPHQL_URI}`)
 
 const cache = new InMemoryCache({
   addTypename: false,
   resultCaching: false,
 });
-
+const graphQLClient = new GraphQLClient(process.env.GRAPHQL_URI, {
+  headers: {
+    authorization: 'Bearer MY_TOKEN',
+  },
+})
 const apolloClient = new ApolloClient({
   // Provide required constructor fields
   cache: cache,
@@ -29,34 +33,33 @@ const apolloClient = new ApolloClient({
   },
 })
 
-export type GraphQLClient = {
+export type GraphQLClientResponse = {
   query: Query;
   mutate: Mutate;
 };
 
-export const createGQLClient = (): GraphQLClient => {
-
-
-  const query: Query = (name, query, variables) => {
-    return apolloClient
-      .query({
-        query,
-        variables,
-        fetchPolicy: 'no-cache',
-      })
-      .then(({ data }) => data[name]);
+export const createGQLClient = (): GraphQLClientResponse => {
+  const query: Query = (query, variables, authToken) => {
+    let requestHeaders = {}
+    if (authToken)
+      requestHeaders = {
+        authorization: 'Bearer ' + authToken
+      }
+    return graphQLClient
+      .request(query, variables, requestHeaders);
   };
 
-  const mutate: Mutate = (name, mutation, variables) => {
-    return apolloClient
-      .mutate({
-        mutation,
-        variables,
-      })
-      .then(({ data }) => data[name]);
+  const mutate: Mutate = (mutation, variables, authToken) => {
+    let requestHeaders = {}
+    if (authToken)
+      requestHeaders = {
+        authorization: 'Bearer ' + authToken
+      }
+    return graphQLClient
+      .request(mutation, variables, requestHeaders);
   };
 
-  return { query, mutate };
+  return {query, mutate};
 };
 
-export default  apolloClient;
+export default apolloClient;
