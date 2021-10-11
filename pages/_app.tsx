@@ -1,15 +1,14 @@
 import '../styles/globals.scss'
 import {Provider} from "react-redux";
-import { ApolloProvider } from 'react-apollo';
 import NextApp from "next/app";
 import {compose} from "redux";
-import ApolloClient, {InMemoryCache} from "apollo-boost";
+import {ApolloClient, ApolloProvider, InMemoryCache} from "@apollo/client";
 import MainSiteLayout from "@client/layouts/MainSite/MainSiteLayout";
 import {AppPageProps} from '@client/types/pages';
 import makeStore from '@client/utils/store';
-import withApollo from '@client/utils/withApollo';
 import withRedux from '@client/utils/withRedux';
 
+console.log(`Attempt connect to ${process.env.GRAPHQL_URI}`)
 const apolloClient = new ApolloClient({
   uri: process.env.GRAPHQL_URI,
   cache: new InMemoryCache()

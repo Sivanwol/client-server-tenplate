@@ -2,7 +2,7 @@
 import { ComponentClass } from 'react';
 import { NextPageContext } from 'next';
 import NextApp, { AppContext } from 'next/app';
-import { ApplicationState, FilteredOptions } from '@client/reducers/types';
+import { ApplicationState } from '@client/reducers/types';
 import { AppStore } from '@client/types';
 
 export interface ThemeProps {
@@ -33,12 +33,6 @@ export interface WrapperProps extends NextAppContext {
   isServer: boolean;
   pageProps: object;
 }
-
-export type FetchAsync = <T>(uri: RequestInfo) => Promise<T>;
-
-// export type FilterProductByOptions = (products: Product[], { size }: FilteredOptions) => Product[];
-//
-// export type GetProductSizes = (products: Product[]) => string[];
 
 export type GetProductSize = (input: string | string[]) => string;
 

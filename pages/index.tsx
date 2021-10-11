@@ -12,7 +12,8 @@ const HomePage: NextPage<Partial<PageProps>> = () => (
   </>
 );
 
-HomePage.getInitialProps = async ({ store, query: { size } }: PageProps) => {
+HomePage.getInitialProps = async ({ store}: PageProps) => {
+  console.log("Init");
   // Fetch products before page is rendered
   await store.dispatch<any>(fetchDataItemsIfNeeded()); //eslint-disable-line
 
